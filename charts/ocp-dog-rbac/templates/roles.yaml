@@ -24,6 +24,28 @@ metadata:
     app: ocp-dog
     role: deployer-full
 rules:
-  - apiGroups: ["", "apps", "route.openshift.io", "autoscaling"]
-    resources: ["*"]
+  - apiGroups: [""]
+    resources:
+      - configmaps
+      - secrets
+      - services
+      - endpoints
+      - pods
+      - pods/log
+      - persistentvolumeclaims
+    verbs: ["*"]
+  - apiGroups: ["apps"]
+    resources:
+      - deployments
+      - replicasets
+      - statefulsets
+      - daemonsets
+    verbs: ["*"]
+  - apiGroups: ["autoscaling"]
+    resources:
+      - horizontalpodautoscalers
+    verbs: ["*"]
+  - apiGroups: ["route.openshift.io"]
+    resources:
+      - routes
     verbs: ["*"]

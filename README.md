@@ -15,7 +15,7 @@ Repositorio Helm con todos los objetos RBAC necesarios para la aplicación **ocp
 
 ### Roles
 - `ocp-dog-app-basic`: permisos de solo lectura sobre `ConfigMaps`, `Services`, `Endpoints` y `Pods` en el namespace.
-- `ocp-dog-deployer-full`: permisos completos (`*` sobre recursos y verbs) en los API groups `""`, `apps`, `route.openshift.io` y `autoscaling`.
+- `ocp-dog-deployer-full`: permisos completos sobre los recursos necesarios para desplegar (ConfigMaps, Secrets, Services, Pods, PVCs, Deployments, ReplicaSets, StatefulSets, DaemonSets, HPAs y Routes) dentro del namespace.
 
 ### RoleBindings
 Cada ServiceAccount de la aplicación queda enlazada al rol `ocp-dog-app-basic`, mientras que `sa-ocp-dog-deployer` recibe el rol `ocp-dog-deployer-full`, asegurando el principio de mínimos privilegios.

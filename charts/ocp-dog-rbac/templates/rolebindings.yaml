@@ -1,0 +1,25 @@
+{{- if .Values.bindings }}
+{{- $total := len .Values.bindings }}
+{{- $ns := .Values.namespace }}
+{{- range $index, $binding := .Values.bindings }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ $binding.name }}
+  namespace: {{ $ns }}
+  labels:
+    app: ocp-dog
+    binding: {{ replace $binding.name "bind-" "" }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ $binding.serviceAccountName }}
+    namespace: {{ $ns }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ $binding.roleName }}
+{{- if lt $index (sub $total 1) }}
+---
+{{- end }}
+{{- end }}
+{{- end }}

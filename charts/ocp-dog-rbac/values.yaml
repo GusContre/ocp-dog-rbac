@@ -1,0 +1,37 @@
+namespace: guscontre-dev
+createNamespace: true
+
+serviceAccounts:
+  - name: sa-ocp-dog-frontend
+    component: frontend
+  - name: sa-ocp-dog-frontend-api
+    component: frontendApi
+  - name: sa-ocp-dog-backend-api
+    component: backendApi
+  - name: sa-ocp-dog-database
+    component: database
+  - name: sa-ocp-dog-deployer
+    component: cicd
+
+roles:
+  appBasic:
+    name: ocp-dog-app-basic
+  deployer:
+    name: ocp-dog-deployer-full
+
+bindings:
+  - name: bind-frontend-app-basic
+    serviceAccountName: sa-ocp-dog-frontend
+    roleName: ocp-dog-app-basic
+  - name: bind-frontend-api-app-basic
+    serviceAccountName: sa-ocp-dog-frontend-api
+    roleName: ocp-dog-app-basic
+  - name: bind-backend-api-app-basic
+    serviceAccountName: sa-ocp-dog-backend-api
+    roleName: ocp-dog-app-basic
+  - name: bind-database-app-basic
+    serviceAccountName: sa-ocp-dog-database
+    roleName: ocp-dog-app-basic
+  - name: bind-cicd-deployer
+    serviceAccountName: sa-ocp-dog-deployer
+    roleName: ocp-dog-deployer-full

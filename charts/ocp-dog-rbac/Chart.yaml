@@ -1,0 +1,5 @@
+apiVersion: v2
+name: ocp-dog-rbac
+description: RBAC resources for the ocp-dog project in OpenShift
+version: 0.1.0
+type: application

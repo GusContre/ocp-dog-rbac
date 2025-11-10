@@ -10,7 +10,6 @@ env:
   CHART_PATH: charts/ocp-dog-rbac
   RELEASE_NAME: ocp-dog-rbac
   OPENSHIFT_NAMESPACE: ${{ secrets.OPENSHIFT_NAMESPACE || 'guscontre-dev' }}
-  OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
 
 jobs:
   deploy:
@@ -34,7 +33,7 @@ jobs:
       - name: Login to OpenShift
         uses: redhat-actions/oc-login@v1
         with:
-          openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
+          openshift_server_url: https://api.rm1.0a51.p1.openshiftapps.com:6443
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
           insecure_skip_tls_verify: true
           namespace: ${{ env.OPENSHIFT_NAMESPACE }}

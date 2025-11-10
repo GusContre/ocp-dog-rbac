@@ -24,7 +24,7 @@ Cada ServiceAccount de la aplicación queda enlazada al rol `ocp-dog-app-basic`,
 ```bash
 helm upgrade --install ocp-dog-rbac ./charts/ocp-dog-rbac -n guscontre-dev
 ```
-El chart crea (opcionalmente) el namespace `guscontre-dev`, todas las ServiceAccounts y los bindings descritos.
+El chart asume que el namespace ya existe; si estás creando un clúster nuevo puedes habilitar la creación automática con `--set createNamespace=true`.
 
 ## Automatización con GitHub Actions
 Este repositorio incluye el workflow `.github/workflows/rbac-deploy.yml`. Para usarlo:

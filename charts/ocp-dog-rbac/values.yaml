@@ -1,5 +1,5 @@
 namespace: guscontre-dev
-createNamespace: true
+createNamespace: false
 
 serviceAccounts:
   - name: sa-ocp-dog-frontend
